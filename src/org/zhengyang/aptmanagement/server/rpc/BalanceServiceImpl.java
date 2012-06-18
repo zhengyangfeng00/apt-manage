@@ -126,6 +126,9 @@ public class BalanceServiceImpl extends RemoteServiceServlet implements BalanceS
     return userDao.getUserByUsername(username);
   }
 
+  /**
+   * Return consumptions given department name, order by date.
+   */
   @Override
   public Consumption[] fetchConsumptionsOfApartment(String apartmentName) {
     return consumptionDao.fetchConsumptions(apartmentName).toArray(new Consumption[0]);

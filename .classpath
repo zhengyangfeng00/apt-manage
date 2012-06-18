@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" output="test-classes" path="test"/>
+	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
+	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/objectify-3.1.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/guava-gwt-12.0.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/guava-12.0.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/guice-3.0.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/guice-servlet-3.0.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/javax.inject.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/aopalliance.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/gin-1.5-post-gwt-2.2.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/appengine-api-1.0-sdk-1.6.4.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/appengine-api-labs-1.6.4.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/appengine-jsr107cache-1.6.4.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/geronimo-jpa_3.0_spec-1.1.1.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/geronimo-jta_1.1_spec-1.1.1.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/gwt-servlet.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/jdo2-api-2.3-eb.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/jsr107cache-1.1.jar"/>
+	<classpathentry kind="lib" path="testlib/appengine-api-labs.jar"/>
+	<classpathentry kind="lib" path="testlib/appengine-api-stubs.jar"/>
+	<classpathentry kind="lib" path="testlib/appengine-api.jar"/>
+	<classpathentry kind="lib" path="testlib/appengine-testing.jar"/>
+	<classpathentry kind="lib" path="testlib/cglib-nodep-2.2.2.jar"/>
+	<classpathentry kind="lib" path="testlib/easymock-3.1-sources.jar"/>
+	<classpathentry kind="lib" path="testlib/easymock-3.1.jar"/>
+	<classpathentry kind="lib" path="testlib/objenesis-1.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="testlib/objenesis-1.2-sources.jar"/>
+	<classpathentry kind="lib" path="testlib/objenesis-1.2.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/oro-2.0.8.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/piriti-dev-0.8.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/piriti-user-0.8.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/totoe-0.4.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/velocity-1.7.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/jsr305.jar"/>
+	<classpathentry kind="output" path="war/WEB-INF/classes"/>
+</classpath>
