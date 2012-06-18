@@ -1,0 +1,55 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		/* Add CSS here. See the GWT docs on UI Binder for more details */
+	</ui:style>
+	<g:HTMLPanel>
+		<div class="modal hide fade" id="registerAptDialog">
+			<div class="modal-header">
+				<button class="close" data-dismiss="modal">×</button>
+				<h3>Register</h3>
+			</div>
+			<div class="modal-body">
+				<div>
+					<p>Note if you are the first person to register this apartment, you
+						are the admin of this apartment by default.</p>
+					<form>
+						<fieldset>
+							<div class="control-group">
+								<lable class="control-label">apartment name</lable>
+								<div class="controls">
+									<g:TextBox ui:field="aptnameInput"></g:TextBox>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">address</label>
+								<div class="controls">
+									<g:TextBox ui:field="addressInput"></g:TextBox>
+								</div>
+							</div>
+							<div class="control-group">
+							 <label class="control-label">Your Login ID</label>
+							 <div class="controls">
+							   <g:TextBox ui:field="loginIdInput"></g:TextBox>
+							 </div>
+							</div>
+							<div class="control-group">
+							 <label class="control-group">Password</label>
+							 <div class="controls">
+							   <g:PasswordTextBox ui:field="passwordInput"></g:PasswordTextBox>
+							 </div>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<a data-dismiss="modal">
+					<g:Button ui:field="closeBtn" styleName="btn">Close</g:Button>
+				</a>
+				<g:Button ui:field="registerAptBtn" styleName="btn btn-primary">Save</g:Button>
+			</div>
+		</div>
+	</g:HTMLPanel>
+</ui:UiBinder> 

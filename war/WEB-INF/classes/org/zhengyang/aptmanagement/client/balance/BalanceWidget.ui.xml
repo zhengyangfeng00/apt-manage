@@ -1,0 +1,82 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:s="urn:import:org.zhengyang.aptmanagement.client.shared.widgets">
+	<g:HTMLPanel>
+		<g:HTMLPanel ui:field="alertContainer"></g:HTMLPanel>
+		<div class="row">
+			<div class="span4">
+				<h2>Balance</h2>
+				<g:FlowPanel ui:field="balanceToolbar">
+					<g:Button ui:field="refreshBalanceButton" styleName="btn"></g:Button>
+				</g:FlowPanel>
+				<g:FlexTable ui:field="balanceTable" styleName="table table-striped" />
+				<h2>Add New Consumption</h2>
+				<form class="well">
+					<fieldset>
+						<div class="control-group">
+							<label class="control-label">Consumption Name</label>
+							<div class="controls">
+								<g:TextBox ui:field="consumptionNameInput" />
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">Amount</label>
+							<div class="controls">
+								<g:TextBox ui:field="amountInput" />
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">Category</label>
+							<div class="controls">
+								<g:ListBox ui:field="categorySelect" />
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">Add new category</label>
+							<div class="controls">
+								<div class="input-append">
+									<g:TextBox ui:field="newCategoryInput" />
+									<g:Button ui:field="addNewCategoryButton" styleName="btn">Add</g:Button>
+								</div>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">Paid by</label>
+							<div class="controls">
+								<g:ListBox ui:field="paidByInput" />
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">Cost shared by</label>
+							<div class="controls">
+								<g:HTMLPanel ui:field="sharedByContainer"></g:HTMLPanel>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">Note</label>
+							<div class="controls">
+								<g:TextArea ui:field="noteTextArea" />
+							</div>
+						</div>
+						<div class="control-group">
+							<div class="controls">
+								<g:Button ui:field="addConsumptionButton" styleName="btn btn-primary">add</g:Button>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+			<div class="span8">
+				<h2>Consumptions</h2>
+				<g:HTMLPanel ui:field="consumptionToolbar">
+					View from
+					<s:NewDatePicker></s:NewDatePicker>
+					To
+					<s:NewDatePicker></s:NewDatePicker>
+				</g:HTMLPanel>
+				<g:FlexTable ui:field="consumptionTable" styleName="table table-striped" />
+			</div>
+		</div>
+	</g:HTMLPanel>
+
+</ui:UiBinder> 

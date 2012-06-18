@@ -1,0 +1,59 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		/* Add CSS here. See the GWT docs on UI Binder for more details */
+	</ui:style>
+	<g:HTMLPanel>
+		<div class="modal hide fade" id="registerUserDialog">
+			<div class="modal-header">
+				<button class="close" data-dismiss="modal">×</button>
+				<h3>Register</h3>
+			</div>
+			<div class="modal-body">
+				<div>
+          <form>
+            <fieldset>
+              <div class="control-group">
+                <label class="control-label">Login ID</label>
+                <div class="controls">
+                  <g:TextBox ui:field="usernameInput"></g:TextBox>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Password</label>
+                <div class="controls">
+                  <g:PasswordTextBox ui:field="passwordInput"></g:PasswordTextBox>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Your name</label>
+                <div class="controls">
+                  <g:TextBox ui:field="nameInput"></g:TextBox>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Email</label>
+                <div class="controls">
+                  <g:TextBox ui:field="emailInput"></g:TextBox>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Apartment</label>
+                <div class="controls">
+                  <g:ListBox ui:field="apartmentList"></g:ListBox>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+			</div>
+			<div class="modal-footer">
+				<a data-dismiss="modal">
+          <g:Button ui:field="closeBtn" styleName="btn">Close</g:Button>
+        </a>
+				<g:Button ui:field="registerUserBtn" styleName="btn btn-primary">Save</g:Button>
+			</div>
+		</div>
+	</g:HTMLPanel>
+</ui:UiBinder> 

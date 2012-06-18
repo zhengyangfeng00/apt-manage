@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='consumption_management'>
+  <!-- Inherit the core Web Toolkit stuff.                        -->
+  <inherits name='com.google.gwt.user.User'/>
+  <inherits name='com.google.common.collect.Collect'/>
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/bootstrap-modal.js"></script>
+  <script src="js/bootstrap-alert.js"></script>
+  <script src="js/jquery-ui-1.8.20.custom.min.js"></script>
+  
+  <entry-point class='org.zhengyang.aptmanagement.client.balance.BalancePage'/>
+  
+  <!-- <super-source path="annotation"/> -->
+  <!-- Specify the paths for translatable code                    -->
+  <source path='client'/>
+  <source path='shared'/>
+  
+</module>

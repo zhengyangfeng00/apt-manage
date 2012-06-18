@@ -1,0 +1,2 @@
+serviceClass: org.zhengyang.aptmanagement.client.index.LoginService
+path: 18A7714978313408BD75FC0B22CB1706.gwt.rpc

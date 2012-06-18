@@ -1,0 +1,2 @@
+serviceClass: org.zhengyang.aptmanagement.client.shared.SessionService
+path: D6B08600806F10539FED139FA9F4028D.gwt.rpc

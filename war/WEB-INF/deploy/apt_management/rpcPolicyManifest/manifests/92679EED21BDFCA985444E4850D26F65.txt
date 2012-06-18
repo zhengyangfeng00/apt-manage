@@ -1,0 +1,2 @@
+serviceClass: org.zhengyang.aptmanagement.client.UserService
+path: C7482CAF2D851C02B93D7EE2A3FB145D.gwt.rpc

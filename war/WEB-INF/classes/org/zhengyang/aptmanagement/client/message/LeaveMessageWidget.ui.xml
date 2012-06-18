@@ -1,0 +1,16 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		
+	</ui:style>
+	<g:HTMLPanel>
+	 <div class="row">
+	   <div>
+	     Name:<g:TextBox ui:field="nameInput"></g:TextBox> <br />
+	     Message:<g:TextArea ui:field="contentInput"></g:TextArea> <br />
+	     <g:Button ui:field="msgButton" styleName="btn">Submit</g:Button>
+	   </div>
+	 </div>
+	</g:HTMLPanel>
+</ui:UiBinder> 

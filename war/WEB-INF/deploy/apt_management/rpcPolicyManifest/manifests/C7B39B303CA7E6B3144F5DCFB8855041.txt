@@ -1,0 +1,2 @@
+serviceClass: org.zhengyang.aptmanagement.client.BalanceService
+path: 4AC70824B3E60664E8AB9CCBEF5B83AA.gwt.rpc
