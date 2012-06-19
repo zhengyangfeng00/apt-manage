@@ -15,6 +15,9 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.KeyCodes;
+import com.google.gwt.event.dom.client.KeyPressEvent;
+import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.storage.client.Storage;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -41,6 +44,7 @@ public class Index implements EntryPoint {
   private LoginServiceAsync loginService = GWT.create(LoginService.class);
   private SessionServiceAsync sessionService = GWT.create(SessionService.class);
   private Storage store = null;
+  private LoginHandler loginHandler = new LoginHandler();
 
   @Override
   public void onModuleLoad() {
@@ -51,7 +55,8 @@ public class Index implements EntryPoint {
     /* Code for Login Button */
     loginButton.setText("Sign in!");
     loginButton.setStyleName("btn btn-success");
-    loginButton.addClickHandler(new LoginClickHandler());
+    loginButton.addClickHandler(new LoginClickHandler(loginHandler));
+    passwordInput.addKeyPressHandler(new LoginKeyPressHandler(loginHandler));
     RootPanel.get("loginButtonContainer").add(loginButton);
     
     /* Code for Register User Button*/
@@ -118,8 +123,35 @@ public class Index implements EntryPoint {
   }
 
   class LoginClickHandler implements ClickHandler {
+    LoginHandler loginHandler;
+    
+    public LoginClickHandler(LoginHandler loginHandler) {
+      this.loginHandler = loginHandler;
+    }
+    
     @Override
     public void onClick(ClickEvent event) {
+      loginHandler.performAction();
+    }
+  }
+
+  class LoginKeyPressHandler implements KeyPressHandler {
+    LoginHandler loginHandler;
+
+    public LoginKeyPressHandler(LoginHandler loginHandler) {
+      this.loginHandler = loginHandler;
+    }
+
+    @Override
+    public void onKeyPress(KeyPressEvent event) {
+      if (event.getCharCode() == KeyCodes.KEY_ENTER) {
+        loginHandler.performAction();
+      }
+    }
+  }
+
+  class LoginHandler {
+    public void performAction() {
       final String username = usernameInput.getText();
       String password = passwordInput.getText();
       loginService.validate(username, password, new AsyncCallback<Boolean>() {
@@ -130,9 +162,10 @@ public class Index implements EntryPoint {
 
         @Override
         public void onSuccess(Boolean correct) {
-//          saveUserInfoWithLocalStorage(username, correct);
-          // TODO : should we make sure the username is a safe string?
-          if (correct) {           
+          // saveUserInfoWithLocalStorage(username, correct);
+          // TODO : should we make sure the username is a safe
+          // string?
+          if (correct) {
             HashMap<String, String> data = Maps.newHashMap();
             data.put("username", username);
             sessionService.createSession(data, new AsyncCallback<Void>() {
@@ -140,11 +173,12 @@ public class Index implements EntryPoint {
               public void onFailure(Throwable caught) {
                 showNotification("Error", "Something is wrong... Try again.");
               }
+
               @Override
               public void onSuccess(Void result) {
                 Window.Location.assign("/balance.html");
               }
-            });           
+            });
           } else {
             showNotification("Error", "Username or password is not correct.");
           }
