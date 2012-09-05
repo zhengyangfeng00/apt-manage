@@ -8,6 +8,8 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.RootPanel;
 
 /**
+ * @author zhengyang.feng2011@gmail.com (Zhengyang Feng)
+ * 
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class BalancePage extends Composite implements EntryPoint {
@@ -18,5 +20,4 @@ public class BalancePage extends Composite implements EntryPoint {
     RootPanel.get().add(navigateWidget);
     RootPanel.get("balance").add(new BalanceWidget());
   }
-  
 }

@@ -1,21 +1,7 @@
-//
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-// //////////////////////////////////////////////////////////////////////////////
-
 package org.zhengyang.aptmanagement.server.rpc;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.zhengyang.aptmanagement.client.balance.BalanceService;
 import org.zhengyang.aptmanagement.server.dao.ApartmentDao;
@@ -26,6 +12,7 @@ import org.zhengyang.aptmanagement.shared.dto.Consumption;
 import org.zhengyang.aptmanagement.shared.dto.ConsumptionType;
 import org.zhengyang.aptmanagement.shared.dto.User;
 
+import com.google.appengine.labs.repackaged.com.googlecode.charts4j.collect.Lists;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -148,5 +135,31 @@ public class BalanceServiceImpl extends RemoteServiceServlet implements BalanceS
     u.apartmentName = apartmentName;
     User[] users = { u };
     userDao.updateUsers(users);
+  }
+
+  @Override
+  public void revertConsumption(Long consumptionId) {
+    List<User> toBeUpdated = Lists.newArrayList();
+    Consumption csp = consumptionDao.getConsumption(consumptionId);
+    
+    // 1. Subtract money from who paid it
+    User paidBy = userDao.getUserByUsername(csp.paidByUsername);
+    paidBy.balance -= csp.amount;
+    toBeUpdated.add(paidBy);
+    // 2. Add money to those shared the consumption
+    double moneyPerPerson = csp.amount / csp.sharedByUsers.length;
+    for (String uid : csp.sharedByUsers) {
+      User u = userDao.getUserByUsername(uid);
+      if (u.username.equals(paidBy.username)) {
+        u = paidBy;
+      }
+      u.balance += moneyPerPerson;
+      toBeUpdated.add(u);
+    }
+    // 3. updated related users' balance
+    userDao.updateUsers(toBeUpdated.toArray(new User[0]));
+    
+    // 4. remove the consumption record
+    consumptionDao.removeConsumption(consumptionId);
   }
 }

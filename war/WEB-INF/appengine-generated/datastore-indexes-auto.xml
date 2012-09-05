@@ -1,11 +1,4 @@
-<!-- Indices written at Mon, 18 Jun 2012 22:43:42 EDT -->
+<!-- Indices written at Tue, 4 Sep 2012 23:15:20 EDT -->
 
-<datastore-indexes>
+<datastore-indexes/>
 
-    <!-- Used 1 time in query history -->
-    <datastore-index kind="Consumption" ancestor="false" source="auto">
-        <property name="apartmentName" direction="asc"/>
-        <property name="date" direction="desc"/>
-    </datastore-index>
-
-</datastore-indexes>

@@ -1,18 +1,3 @@
-//
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-// //////////////////////////////////////////////////////////////////////////////
-
 package org.zhengyang.aptmanagement.client.balance;
 
 import java.util.ArrayList;
@@ -216,7 +201,33 @@ public class BalanceWidget extends Composite {
           consumptionTable.setHTML(i + 1, 3, c.type);
           consumptionTable.setHTML(i + 1, 4, c.note);
           consumptionTable.setHTML(i + 1, 5, Formatter.dateToString(c.date));
+          Button revertBtn = new Button("Revert");
+          revertBtn.setStyleName("btn btn-primary btn-mini");
+          consumptionTable.setWidget(i + 1, 6, revertBtn);
+          revertBtn.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+              balanceService.revertConsumption(c.id, new AsyncCallback<Void>() {
+                @Override
+                public void onFailure(Throwable caught) {
+                  defaultErrorHandler(caught); 
+                }
+                @Override
+                public void onSuccess(Void result) {
+                  // clear the content of the consumption table
+                  for (int i = 1; i < consumptionTable.getRowCount(); i++) {
+                    consumptionTable.removeRow(i);
+                  }
+                  // load latest data
+                  fetchConsumptionsOfApartment(BalanceWidget.this.apartmentName);
+                  // update the balance
+                  fetchUsersOfApartment(BalanceWidget.this.apartmentName);
+                }
+              });
+            }            
+          });
         }
+        
         /** The following code is useful when we do paging
         // remove the rest of previous page, if any
         int lastLine = result.length + 2;

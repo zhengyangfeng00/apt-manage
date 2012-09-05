@@ -1,18 +1,3 @@
-//
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-// //////////////////////////////////////////////////////////////////////////////
-
 package org.zhengyang.aptmanagement.server.rpc;
 
 import static org.junit.Assert.assertEquals;
@@ -85,6 +70,35 @@ public class BalanceServiceImplTest {
     assertEquals(800, userDao.getUserByUsername("zf309").balance, tolerance);
     assertEquals(-550, userDao.getUserByUsername("zf301").balance, tolerance);
     assertEquals(-250, userDao.getUserByUsername("zf302").balance, tolerance);
+  }
+  
+  @Test
+  public void testRevertConsumption() {
+    String name = "法拉盛买菜";
+    Date date = new Date();
+    String note = "This is the note.";
+    double amount = 300;
+    User paidBy = userDao.getUserByUsername("zf309");
+    String type = "买菜";
+    String apartmentName = "Two-Tower of Curry";
+    String[] sharedBy = {user1.username, user2.username, user3.username};
+    Consumption consumption = new Consumption(name, date, amount, note, paidBy.username, paidBy.name, type, apartmentName, sharedBy);
+    srv.addConsumption(consumption);
+    double tolerance = 0.001;
+    System.out.println(userDao.getUserByUsername("zf309").balance);
+    System.out.println(userDao.getUserByUsername("zf301").balance);
+    System.out.println(userDao.getUserByUsername("zf302").balance);
+    assertEquals(200.0, userDao.getUserByUsername("zf309").balance, tolerance);
+    assertEquals(-100.0, userDao.getUserByUsername("zf301").balance, tolerance);
+    assertEquals(-100.0, userDao.getUserByUsername("zf302").balance, tolerance);
+    
+    srv.revertConsumption(consumption.id);
+    System.out.println(userDao.getUserByUsername("zf309").balance);
+    System.out.println(userDao.getUserByUsername("zf301").balance);
+    System.out.println(userDao.getUserByUsername("zf302").balance);
+    assertEquals(0.0, userDao.getUserByUsername("zf309").balance, tolerance);
+    assertEquals(0.0, userDao.getUserByUsername("zf301").balance, tolerance);
+    assertEquals(0.0, userDao.getUserByUsername("zf302").balance, tolerance);
   }
   
   @Before

@@ -58,4 +58,12 @@ public class ConsumptionDao extends DAOBase {
   public List<Consumption> fetchConsumptions(String apartmentName) {
     return ofy().query(Consumption.class).filter("apartmentName =", apartmentName).order("-date").list();
   }
+
+  public void removeConsumption(Long consumptionId) {
+    ofy().delete(Consumption.class, consumptionId);
+  }
+
+  public Consumption getConsumption(Long consumptionId) {
+    return ofy().get(Consumption.class, consumptionId);
+  }
 }

@@ -1,4 +1,2 @@
 # Module consumption_management
 # RPC service class, partial path of RPC policy file
-org.zhengyang.aptmanagement.client.balance.BalanceService, E632AFFEFCF5F41244692FA3F3003110.gwt.rpc
-org.zhengyang.aptmanagement.client.shared.SessionService, D6B08600806F10539FED139FA9F4028D.gwt.rpc
